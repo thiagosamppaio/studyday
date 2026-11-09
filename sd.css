@@ -357,3 +357,4 @@ details.dicas div{margin-top:6px;line-height:1.5}
 .chkl:first-child{border-top:0}
 .chkl input{width:20px;height:20px;accent-color:var(--acc)}
 @media(min-width:900px){#cron{bottom:32px;left:calc(50% + 110px)}}
+.boasvindas .t{white-space:normal;overflow:visible;text-overflow:clip;font-weight:600;font-size:1.05rem}

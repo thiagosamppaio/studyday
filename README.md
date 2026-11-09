@@ -29,12 +29,16 @@ Para não perder o progresso ao trocar de celular ou limpar o navegador, use **M
 
 ## Conteúdo
 
-| Pacote | Áreas | Como entra no app |
-|---|---|---|
-| Pacote 1 (`conteudo-1.json`) | 1 Políticas e direitos · 2 SUS e organização do cuidado · 3 Envelhecimento e epidemiologia · 4 Avaliação multidimensional e fragilidade | Já embutido |
-| Pacotes seguintes | Áreas 5 a 8 | **Mais › Importar pacote de estudo** |
+O app vem **vazio**: todo o conteúdo entra por **pacotes de estudo** (arquivos `.json`), em **Mais › Importar pacote de estudo**. Assim, o mesmo app serve para qualquer assunto.
 
-Importar um pacote **não apaga** o progresso. Questões elaboradas a partir das fontes oficiais citadas em cada comentário — em caso de dúvida, vale conferir a fonte.
+| Pacote | Conteúdo |
+|---|---|
+| `studyday-pacote-1.json` | Saúde da Pessoa Idosa – Áreas 1 a 4 (políticas e direitos, SUS, envelhecimento, avaliação e fragilidade) |
+| `studyday-pacote-2.json` | Saúde da Pessoa Idosa – Áreas 5 a 8 (quedas e marcha, condições crônicas, cuidados paliativos, fisioterapia geriátrica) |
+
+- Importar um pacote **não apaga** o progresso.
+- **Remover** um pacote (Mais › Conteúdo) tira o conteúdo do app, mas guarda o progresso; se o pacote for importado de novo, tudo volta.
+- As questões citam a fonte no comentário — em caso de dúvida, vale conferir a fonte.
 
 ## Para atualizar o app
 
@@ -50,7 +54,6 @@ Envie os arquivos novos para este repositório (**Adicionar arquivo › Enviar a
 | `sd-logica.js` | Cronograma, revisões, simulados, flashcards e estatísticas |
 | `sd-ui.js`, `sd-util.js` | Componentes de tela e utilidades |
 | `tela-*.js` | Telas: Hoje, Plano, Questões, Cards e Mais |
-| `conteudo-1.json` | Pacote 1 de conteúdo |
 | `manifest.json`, `sw.js`, `icon-*.png` | Instalação e funcionamento offline |
 
 Formato dos pacotes de conteúdo: JSON com `"formato": "studyday-pacote"`, contendo `areas`, `referencias`, `topicos`, `questoes` e `cards`.

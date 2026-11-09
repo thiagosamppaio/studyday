@@ -2,9 +2,10 @@
 // O conteúdo vem de arquivos "pacote" (JSON). O progresso fica só neste aparelho.
 import { today } from './sd-util.js';
 
-export const VERSAO_APP = '1.0';
+export const VERSAO_APP = '1.1';
 const KEY = 'studyday.progresso.v1';
-const PACOTES_EMBUTIDOS = ['conteudo-1.json'];
+// O app vem vazio: todo o conteúdo entra por pacotes importados (Mais › Importar pacote).
+const PACOTES_EMBUTIDOS = [];
 
 export const app = {
   c: { areas: [], topicos: [], questoes: [], cards: [], referencias: [], pacotes: [] }, // conteúdo mesclado
@@ -75,6 +76,11 @@ export function mesclar() {
 }
 export function importarPacote(pk) {
   app.p.pacotes[pk.id] = pk;
+  salvar(); mesclar();
+}
+/** Tira o pacote do app. O progresso (respostas, revisões, cards) fica guardado e volta se o pacote for importado de novo. */
+export function removerPacote(id) {
+  delete app.p.pacotes[id];
   salvar(); mesclar();
 }
 

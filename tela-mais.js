@@ -1,6 +1,6 @@
 // Mais: desempenho, biblioteca, importação de pacotes, backup do progresso e ajustes.
 import { $, esc, ic, today, addDays, iso, fmtHoras, DOW } from './sd-util.js';
-import { app, salvar, VERSAO_APP, area, ref, validarPacote, importarPacote, substituirProgresso, progressoNovo } from './sd-dados.js';
+import { app, salvar, VERSAO_APP, area, ref, validarPacote, importarPacote, removerPacote, substituirProgresso, progressoNovo } from './sd-dados.js';
 import { acertoArea, acertoTopico, progressoGeral, respostasNoPeriodo, pontosFracos, cadernoErros, estudado } from './sd-logica.js';
 import { acoes, telas, abrirFolha, fecharFolha, cabecalho, aviso, barra, cabecalhoTela, corArea } from './sd-ui.js';
 
@@ -16,7 +16,7 @@ function render() {
   </div>
   <h2>Conteúdo</h2><div class="sec">
    <button class="item" data-act="importarPacote">${ic('upload')}<div class="grow"><div class="t">Importar pacote de estudo</div><div class="meta">Adiciona novos tópicos, questões e cards sem apagar nada</div></div></button>
-   <div class="item"><div class="grow"><div class="t">Pacotes carregados</div><div class="meta">${app.c.pacotes.map(p => esc(p.titulo || p.id)).join(' · ') || 'nenhum'}</div><div class="meta">${app.c.topicos.length} tópicos · ${app.c.questoes.length} questões · ${app.c.cards.length} flashcards</div></div></div>
+   ${app.c.pacotes.map(p => { const pk = app.p.pacotes[p.id] || {}; return `<div class="item"><div class="grow"><div class="t">${esc(p.titulo || p.id)}</div><div class="meta">${(pk.topicos || []).length} tópicos · ${(pk.questoes || []).length} questões · ${(pk.cards || []).length} flashcards</div></div>${p.embutido ? '' : `<button class="btn mini" data-act="removerPacote" data-id="${esc(p.id)}">Remover</button>`}</div>`; }).join('') || '<div class="item"><div class="grow"><div class="meta">Nenhum pacote carregado ainda.</div></div></div>'}
   </div>
   <h2>Seu progresso</h2><div class="sec">
    <button class="item" data-act="exportarProgresso">${ic('save')}<div class="grow"><div class="t">Exportar backup do progresso</div><div class="meta">Respostas, revisões, cards e configurações</div></div></button>
@@ -59,6 +59,11 @@ acoes.biblioteca = () => {
 document.addEventListener('change', e => { const id = e.target.dataset && e.target.dataset.lido; if (id) { app.p.refs[id] = { lido: e.target.checked }; salvar(); } });
 
 // ---------- importar pacote ----------
+acoes.removerPacote = el => {
+  const pk = app.p.pacotes[el.dataset.id]; if (!pk) return;
+  if (!confirm(`Remover "${pk.titulo || pk.id}" do app?\n\nSeu progresso nesse conteúdo fica guardado e volta se você importar o pacote de novo.`)) return;
+  removerPacote(pk.id); app.render(); aviso('Pacote removido');
+};
 acoes.importarPacote = () => { const i = $('#arqPacote'); i.value = ''; i.click(); };
 $('#arqPacote').addEventListener('change', async e => {
   const f = e.target.files[0]; if (!f) return;

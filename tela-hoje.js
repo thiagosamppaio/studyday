@@ -10,6 +10,12 @@ function render() {
   const sem = respostasNoPeriodo(7), seq = sequenciaDias();
   const minHoje = app.p.estudo[today()] || 0, meta = Math.round((Number(app.p.cfg.horasDia) || 2) * 60);
   let h = cabecalhoTela(saudacao(), fmtLong(today()));
+  if (!app.c.topicos.length) {
+    return h + `<div class="card bloco boasvindas"><div class="t">Comece importando um pacote de estudo</div>
+      <p class="sub">O StudyDay organiza qualquer assunto. O conteúdo (tópicos, questões e flashcards) chega num arquivo de pacote (.json). Salve o arquivo no celular e importe aqui.</p>
+      <div class="btns"><button class="btn pri" data-act="importarPacote">Importar pacote</button></div></div>
+      <p class="note centro">Depois de importar, o plano de estudos é montado a partir da data da prova e das horas por dia.</p>`;
+  }
 
   h += `<div class="card contagem">${dp !== null ? `<b>${Math.max(0, dp)}</b><span>dia${dp === 1 ? '' : 's'} para a prova</span>` : `<span class="grow">Defina a data da prova para montar o cronograma.</span><button class="btn mini" data-act="config">Definir</button>`}</div>`;
 
