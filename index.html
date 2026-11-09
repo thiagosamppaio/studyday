@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#3b5998">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="StudyDay">
+<meta name="description" content="StudyDay: plano de estudos, questões, simulados, flashcards e revisões programadas.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="sd.css">
+<title>StudyDay</title>
+</head>
+<body class="carregando">
+<main id="main"></main>
+<nav id="nav"><div></div></nav>
+<div id="cron"></div>
+<div id="quiz" role="dialog"></div>
+<div id="sheetWrap"><div class="backdrop" data-act="fechar"></div><div class="sheet" role="dialog"><div class="grab"></div><div id="sheetBody"></div></div></div>
+<div id="toast" role="status"></div>
+<input type="file" id="arqPacote" accept="application/json,.json" hidden>
+<input type="file" id="arqProgresso" accept="application/json,.json" hidden>
+<noscript>Ative o JavaScript para usar o StudyDay.</noscript>
+<script type="module" src="sd-main.js"></script>
+</body>
+</html>
