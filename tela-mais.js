@@ -71,7 +71,9 @@ $('#arqPacote').addEventListener('change', async e => {
 // ---------- backup do progresso ----------
 acoes.exportarProgresso = () => {
   const json = JSON.stringify(Object.assign({ formato: 'studyday-progresso' }, app.p, { pacotes: app.p.pacotes }));
-  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([json], { type: 'application/json' })); a.download = 'studyday-progresso-' + today() + '.json';
+  const nome = 'studyday-progresso-' + today() + '.json';
+  if (window.StudyNativa) { window.StudyNativa.salvarArquivo(nome, json); return; }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([json], { type: 'application/json' })); a.download = nome;
   document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500); aviso('Backup gerado');
 };
 acoes.restaurarProgresso = () => { const i = $('#arqProgresso'); i.value = ''; i.click(); };

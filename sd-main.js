@@ -43,7 +43,7 @@ async function iniciar() {
   document.body.classList.remove('carregando');
   render(); iniciarCron();
   if (!app.p.cfg.boas) setTimeout(() => acoes.config(), 400);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+  if (!window.StudyNativa && 'serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 }
 iniciar().catch(err => { console.error(err); document.body.classList.remove('carregando'); $('#main').innerHTML = '<div class="empty"><b>Não foi possível abrir o StudyDay</b>Feche e abra de novo.</div>'; });
 export { salvar };
