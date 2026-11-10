@@ -1,0 +1,31 @@
+{
+ "formato": "studyday-catalogo",
+ "versao": 1,
+ "atualizado": "2026-11-09",
+ "pacotes": [
+  {
+   "codigo": "IDOSO-1",
+   "id": "pacote-1",
+   "titulo": "Saúde da Pessoa Idosa – Parte 1",
+   "tema": "Saúde da Pessoa Idosa",
+   "descricao": "Residência multiprofissional (fisioterapia). Parte 1: políticas e direitos, SUS e organização do cuidado, envelhecimento e epidemiologia, avaliação multidimensional e fragilidade.",
+   "topicos": 16,
+   "questoes": 124,
+   "cards": 78,
+   "data": "2026-11-08",
+   "arquivo": "idoso-1.json"
+  },
+  {
+   "codigo": "IDOSO-2",
+   "id": "pacote-2",
+   "titulo": "Saúde da Pessoa Idosa – Parte 2",
+   "tema": "Saúde da Pessoa Idosa",
+   "descricao": "Residência multiprofissional (fisioterapia). Parte 2: quedas e marcha, condições crônicas, cuidados paliativos e cuidado domiciliar, fisioterapia geriátrica.",
+   "topicos": 14,
+   "questoes": 110,
+   "cards": 54,
+   "data": "2026-11-08",
+   "arquivo": "idoso-2.json"
+  }
+ ]
+}
